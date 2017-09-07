@@ -6,7 +6,7 @@
 using CppAD::AD;
 
 // TODO: Set the timestep length and duration
-size_t N = 20;
+size_t N = 25;
 double dt = 0.10;
 
 // This value assumes the model presented in the classroom is used.
@@ -20,7 +20,7 @@ double dt = 0.10;
 //
 // This is the length from front to CoG that has a similar radius.
 const double Lf = 2.67;
-const double ref_v = 100; 
+const double ref_v = 50; 
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
@@ -61,16 +61,16 @@ class FG_eval
 		// The part of the cost based on the reference state.
 		for (unsigned int t = 0; t < N; t++) 
 		{
-			fg[0] += 1 * CppAD::pow(vars[cte_start + t], 2);
-			fg[0] += 1 * CppAD::pow(vars[epsi_start + t], 2);
+			fg[0] += 300 * CppAD::pow(vars[cte_start + t], 2);
+			fg[0] += 2 * CppAD::pow(vars[epsi_start + t], 2);
 			fg[0] += 1 * CppAD::pow(vars[v_start + t] - ref_v, 2);
 		}
 
 		// Minimize the use of actuators.
 		for (unsigned int t = 0; t < N - 1; t++)
 		{
-			fg[0] += 1000 * CppAD::pow(vars[delta_start + t], 2);
-			fg[0] += 1000 * CppAD::pow(vars[a_start + t], 2);
+			fg[0] +=  1 * CppAD::pow(vars[delta_start + t], 2);
+			fg[0] +=  1 * CppAD::pow(vars[a_start + t], 2);
 		}
 
 		// Minimize the value gap between sequential actuations.
@@ -118,8 +118,8 @@ class FG_eval
 			AD<double> delta0 = vars[delta_start + t - 1];
 			AD<double> a0 = vars[a_start + t - 1];
 
-			AD<double> f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*pow(x0,2);
-			AD<double> psides0 = CppAD::atan(coeffs[1] + 2*coeffs[2]*x0);
+			AD<double> f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*pow(x0,2) + coeffs[3]*pow(x0,3);
+			AD<double> psides0 = CppAD::atan(coeffs[1] + 2*coeffs[2]*x0 + 3*coeffs[3]*pow(x0,2) );
 
 			// Here's `x` to get you started.
 			// The idea here is to constraint this value to be 0.
@@ -153,7 +153,7 @@ class FG_eval
 // ---------------------------------------------
 MPC::MPC() 
 {
-	dt = 0.10;
+	latency = 0.10;
 	prev_d=0;
 	prev_a=0; 
 }
@@ -222,8 +222,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
     	vars_upperbound[i] = 0.436332;
   	}
 	// recommendation read in the discussion forum
-//	vars_lowerbound[delta_start] = prev_d;
-//	vars_upperbound[delta_start] = prev_d;
+//	vars_lowerbound[delta_start+1] = prev_d;
+//	vars_upperbound[delta_start+1] = prev_d;
 
   	// Acceleration/decceleration upper and lower limits.
   	// NOTE: Feel free to change this to something else.
@@ -233,8 +233,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
 	    vars_upperbound[i] = 1.0;
 	}
 	// recommendation read in the discussion forum
-//	vars_lowerbound[a_start] = prev_a;
-//	vars_upperbound[a_start] = prev_a;
+//	vars_lowerbound[a_start+1] = prev_a;
+//	vars_upperbound[a_start+1] = prev_a;
 
 
 
@@ -302,7 +302,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
 
  	// Cost
  	auto cost = solution.obj_value;
-//	std::cout << "Cost " << cost << std::endl;
+	std::cout << "Cost " << cost << std::endl;
 //	std::cout << cost << ";" << std::endl;
 
 	// Save previous steering and acceleration values
