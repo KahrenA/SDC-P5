@@ -1,0 +1,99 @@
+Connected!!!
+vel in = 0.438009	steer_angle_in = 0	throttle_in = 0 ===> predicted_v = 0
+cte = 0.744287 ==> predict_cte = 0.744193
+epsi = -0.00214534 ==> predicted_epsi = -0.00214534
+fg[0] = 62500.6
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+Cost 59586.5
+steer_out = -0.0554787	throttle_out = 1
+
+vel in = 3.20871	steer_angle_in = -0.0242072	throttle_in = 1 ===> predicted_v = 3.20871
+cte = 0.744257 ==> predict_cte = 0.743608
+epsi = -0.00202374 ==> predicted_epsi = -0.00493287
+fg[0] = 62190
+Cost 52007.1
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 2.25352	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 2.25352
+cte = 0.735682 ==> predict_cte = 0.736449
+epsi = 0.00340385 ==> predicted_epsi = -0.0334231
+fg[0] = 62280.3
+Cost 54208.9
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 4.38574	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 4.38574
+cte = 0.623077 ==> predict_cte = 0.651059
+epsi = 0.0638477 ==> predicted_epsi = -0.0078241
+fg[0] = 62081.1
+Cost 49356
+steer_out = -0.944587	throttle_out = 1
+
+vel in = 8.16271	steer_angle_in = -0.412154	throttle_in = 1 ===> predicted_v = 8.16271
+cte = 0.249801 ==> predict_cte = 0.421446
+epsi = 0.211861 ==> predicted_epsi = 0.0858576
+fg[0] = 61750.5
+Cost 41322
+steer_out = 0.281346	throttle_out = 1
+
+vel in = 11.5333	steer_angle_in = 0.12276	throttle_in = 1 ===> predicted_v = 11.5333
+cte = -0.522987 ==> predict_cte = -0.0661322
+epsi = 0.407285 ==> predicted_epsi = 0.460312
+fg[0] = 61479.9
+Cost 34779.5
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 16.6349	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 16.6349
+cte = -1.92002 ==> predict_cte = -1.36871
+epsi = 0.337806 ==> predicted_epsi = 0.609654
+fg[0] = 61115.5
+Cost 26572.6
+steer_out = -0.321841	throttle_out = 1
+
+vel in = 21.402	steer_angle_in = -0.14043	throttle_in = 1 ===> predicted_v = 21.402
+cte = -1.14767 ==> predict_cte = -1.81336
+epsi = -0.316288 ==> predicted_epsi = -0.428852
+fg[0] = 60821.3
+Cost 0
+steer_out = -0.997192	throttle_out = -0.225138
+
+vel in = 26.959	steer_angle_in = -0.435107	throttle_in = 0 ===> predicted_v = 0
+cte = 1.66625 ==> predict_cte = 0.919217
+epsi = -0.280772 ==> predicted_epsi = -0.720101
+fg[0] = 62501.4
+Cost 59792.1
+steer_out = -0.280064	throttle_out = 1
+
+vel in = 22.4136	steer_angle_in = -0.122201	throttle_in = 1 ===> predicted_v = 22.4136
+cte = 1.79913 ==> predict_cte = 1.69196
+epsi = -0.0478322 ==> predicted_epsi = -0.150415
+fg[0] = 60763.9
+Cost 0
+steer_out = 0.999687	throttle_out = -0.999768
+
+vel in = 28.2679	steer_angle_in = 0.436196	throttle_in = 0 ===> predicted_v = 0
+cte = 0.207012 ==> predict_cte = 1.06774
+epsi = 0.309404 ==> predicted_epsi = 0.771214
+fg[0] = 62501.7
+Cost 59624.5
+steer_out = 0.186456	throttle_out = 1
+
+vel in = 23.0462	steer_angle_in = 0.0813568	throttle_in = 1 ===> predicted_v = 23.0462
+cte = -0.682709 ==> predict_cte = 0.023043
+epsi = 0.311234 ==> predicted_epsi = 0.381457
+fg[0] = 60726.7
+Cost 0
+steer_out = 0.638314	throttle_out = 0.999837
+
+vel in = 29.0631	steer_angle_in = 0.278517	throttle_in = 0.999837 ===> predicted_v = 29.0583
+cte = -1.95769 ==> predict_cte = -1.75034
+epsi = 0.0714068 ==> predicted_epsi = 0.374574
+fg[0] = 60441.8
+Cost 0
+steer_out = 0.0567978	throttle_out = 0.998901
+

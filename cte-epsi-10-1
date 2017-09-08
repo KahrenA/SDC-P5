@@ -1,0 +1,164 @@
+Connected!!!
+vel in = 0.438009	steer_angle_in = 0	throttle_in = 0 ===> predicted_v = 0
+cte = 0.744287 ==> predict_cte = 0.744193
+epsi = -0.00214534 ==> predicted_epsi = -0.00214534
+fg[0] = 62505.5
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+Cost 59693.4
+steer_out = -0.363273	throttle_out = 1
+
+vel in = 3.19146	steer_angle_in = -0.158508	throttle_in = 1 ===> predicted_v = 3.19146
+cte = 0.743801 ==> predict_cte = 0.743335
+epsi = -0.00146165 ==> predicted_epsi = -0.0204081
+fg[0] = 62196.6
+Cost 52090.2
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 1.38387	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 1.38387
+cte = 0.733338 ==> predict_cte = 0.73403
+epsi = 0.0049986 ==> predicted_epsi = -0.0176167
+fg[0] = 62368.9
+Cost 56315.7
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 2.49776	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 2.49776
+cte = 0.685111 ==> predict_cte = 0.693125
+epsi = 0.0320905 ==> predicted_epsi = -0.00872785
+fg[0] = 62261.3
+Cost 53679.1
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 4.52389	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 4.52389
+cte = 0.562424 ==> predict_cte = 0.603966
+epsi = 0.0919564 ==> predicted_epsi = 0.0180269
+fg[0] = 62071.7
+Cost 49065.1
+steer_out = -0.999999	throttle_out = 1
+
+vel in = 9.56862	steer_angle_in = -0.436332	throttle_in = 1 ===> predicted_v = 9.56862
+cte = -0.0982385 ==> predict_cte = 0.196982
+epsi = 0.313647 ==> predicted_epsi = 0.157276
+fg[0] = 61635.1
+Cost 38528.9
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 16.1095	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 16.1095
+cte = -4.78709 ==> predict_cte = -3.55119
+epsi = 0.87444 ==> predicted_epsi = 1.1377
+fg[0] = 61276
+Cost 41284.9
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 14.9819	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 14.9819
+cte = -8.43072 ==> predict_cte = -7.36365
+epsi = 0.792686 ==> predicted_epsi = 1.03752
+fg[0] = 61769.6
+Cost 48832.1
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 15.9643	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 15.9643
+cte = -7.80233 ==> predict_cte = -7.18638
+epsi = 0.396104 ==> predicted_epsi = 0.656993
+fg[0] = 61675.3
+Cost 36217.1
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 18.4139	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 18.4139
+cte = -7.13719 ==> predict_cte = -7.6068
+epsi = -0.257877 ==> predicted_epsi = 0.0430429
+fg[0] = 61576.3
+Cost 28285.9
+steer_out = 0.999999	throttle_out = 1
+
+vel in = 17.0887	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 17.0887
+cte = -5.08402 ==> predict_cte = -5.89988
+epsi = -0.497725 ==> predicted_epsi = -0.218461
+fg[0] = 61431.3
+Cost 0
+steer_out = 0.998254	throttle_out = 0.999023
+
+vel in = 21.5792	steer_angle_in = 0.435571	throttle_in = 0.999023 ===> predicted_v = 21.5582
+cte = -0.328209 ==> predict_cte = -2.30545
+epsi = -1.15866 ==> predicted_epsi = -0.80663
+fg[0] = 60862.7
+Cost 0
+steer_out = -0.999989	throttle_out = -0.996909
+
+vel in = 22.9818	steer_angle_in = -0.436328	throttle_in = 0 ===> predicted_v = 0
+cte = -11.4247 ==> predict_cte = -9.50778
+epsi = 0.98651 ==> predicted_epsi = 0.610945
+fg[0] = 63404.4
+Cost 113161
+steer_out = 0.5	throttle_out = -1
+
+vel in = 21.2838	steer_angle_in = 0.218166	throttle_in = 0 ===> predicted_v = 0
+cte = -12.3833 ==> predict_cte = -10.8212
+epsi = 0.82411 ==> predicted_epsi = 0.998021
+fg[0] = 63672
+Cost 111447
+steer_out = 0.5	throttle_out = -1
+
+vel in = 16.5668	steer_angle_in = 0.218166	throttle_in = 0 ===> predicted_v = 0
+cte = -11.8648 ==> predict_cte = -10.9267
+epsi = 0.601966 ==> predicted_epsi = 0.737334
+fg[0] = 63694.5
+Cost 102541
+
+steer_out = 0.5	throttle_out = -1
+vel in = 14.1157	steer_angle_in = 0.218166	throttle_in = 0 ===> predicted_v = 0
+cte = -11.5253 ==> predict_cte = -11.0416
+epsi = 0.349793 ==> predicted_epsi = 0.465133
+fg[0] = 63719.4
+Cost 97227.7
+steer_out = 0.5	throttle_out = 1
+vel in = 8.70648	steer_angle_in = 0.218166	throttle_in = 1 ===> predicted_v = 8.70648
+cte = -11.6359 ==> predict_cte = -11.4269
+epsi = 0.242317 ==> predicted_epsi = 0.313458
+fg[0] = 63011
+Cost 59475
+steer_out = 0.999999	throttle_out = 1
+vel in = 11.2616	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 11.2616
+cte = -11.5317 ==> predict_cte = -11.3535
+epsi = 0.158941 ==> predicted_epsi = 0.342978
+fg[0] = 62789.8
+Cost 51712.5
+steer_out = 0.999999	throttle_out = 1
+vel in = 13.5528	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 13.5528
+cte = -11.1869 ==> predict_cte = -11.244
+epsi = -0.0421608 ==> predicted_epsi = 0.179319
+fg[0] = 62592.7
+Cost 42686
+steer_out = 0.999999	throttle_out = 1
+vel in = 20.0124	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 20.0124
+cte = -12.0984 ==> predict_cte = -13.613
+epsi = -0.858457 ==> predicted_epsi = -0.531413
+fg[0] = 62752.7
+Cost 0
+steer_out = 0.99898	throttle_out = 0.997176
+vel in = 0.059063	steer_angle_in = 0.435887	throttle_in = 0.997176 ===> predicted_v = 0.0588962
+cte = -17.9061 ==> predict_cte = -17.9115
+epsi = -1.13143 ==> predicted_epsi = -1.13047
+fg[0] = 65703.6
+Cost 124948
+steer_out = 0.999999	throttle_out = 1
+vel in = 0.0560783	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 0.0560783
+cte = -18.0396 ==> predict_cte = -18.0447
+epsi = -1.13531 ==> predicted_epsi = -1.13439
+fg[0] = 65751.8
+Cost 125956
+steer_out = 0.999999	throttle_out = 1
+vel in = 0.0533963	steer_angle_in = 0.436332	throttle_in = 1 ===> predicted_v = 0.0533963
+cte = -18.1575 ==> predict_cte = -18.1623
+epsi = -1.13869 ==> predicted_epsi = -1.13782
+fg[0] = 65794.7
+Cost 126859
+steer_out = 0.999999	throttle_out = 1
+Segmentation fault (core dumped)
+kahren@kahren-Lenovo-Yoga-2-Pro:~/Term2/Project5/CarND-MPC-Project/build$ 
+
