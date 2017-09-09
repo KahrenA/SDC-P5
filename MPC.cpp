@@ -6,7 +6,7 @@
 using CppAD::AD;
 
 // TODO: Set the timestep length and duration
-size_t N = 25;
+size_t N = 10;
 double dt = 0.10;
 
 // This value assumes the model presented in the classroom is used.
@@ -20,7 +20,7 @@ double dt = 0.10;
 //
 // This is the length from front to CoG that has a similar radius.
 const double Lf = 2.67;
-const double ref_v = 50; 
+const double ref_v = 40; 
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
@@ -61,8 +61,8 @@ class FG_eval
 		// The part of the cost based on the reference state.
 		for (unsigned int t = 0; t < N; t++) 
 		{
-			fg[0] += 300 * CppAD::pow(vars[cte_start + t], 2);
-			fg[0] += 2 * CppAD::pow(vars[epsi_start + t], 2);
+			fg[0] += 2000 * CppAD::pow(vars[cte_start + t], 2);
+			fg[0] += 2000 * CppAD::pow(vars[epsi_start + t], 2);
 			fg[0] += 1 * CppAD::pow(vars[v_start + t] - ref_v, 2);
 		}
 
@@ -79,6 +79,7 @@ class FG_eval
 			fg[0] += 1 * CppAD::pow(vars[delta_start + t + 1] - vars[delta_start + t], 2);
 			fg[0] += 1 * CppAD::pow(vars[a_start + t + 1] - vars[a_start + t], 2);
 		}
+//		std::cout << "fg[0] = " << fg[0] << "\n";
 
 		//----------------------------------------------------------------
 		// Setup Constraints
@@ -119,29 +120,32 @@ class FG_eval
 			AD<double> a0 = vars[a_start + t - 1];
 
 			AD<double> f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*pow(x0,2) + coeffs[3]*pow(x0,3);
+//			std::cout << "f0 = " << f0 << "\n";
 			AD<double> psides0 = CppAD::atan(coeffs[1] + 2*coeffs[2]*x0 + 3*coeffs[3]*pow(x0,2) );
+//			std::cout << "psides0 = " << psides0 << "\n";
 
 			// Here's `x` to get you started.
 			// The idea here is to constraint this value to be 0.
 			//
 			// Recall the equations for the model:
 			// x_[t+1] = x[t] + v[t] * cos(psi[t]) * dt
+			// y_[t+1] = y[t] + v[t] * sin(psi[t]) * dt
+			// psi_[t+1] = psi[t] + v[t] / Lf * delta[t] * dt
+			// v_[t+1] = v[t] + a[t] * dt
+			// cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
+			// epsi[t+1] = psi[t] - psides[t] + v[t] * delta[t] / Lf * dt
+			//-------------------------------------------------------------	
 			fg[1 + x_start + t] = x1 - (x0 + v0 * CppAD::cos(psi0) * dt);
 
-			// y_[t+1] = y[t] + v[t] * sin(psi[t]) * dt
 			fg[1 + y_start + t] = y1 - (y0 + v0 * CppAD::sin(psi0) * dt);
 
-			// psi_[t+1] = psi[t] + v[t] / Lf * delta[t] * dt
 			fg[1 + psi_start + t] = psi1 - (psi0 + v0 * delta0 / Lf * dt);
 			
-			// v_[t+1] = v[t] + a[t] * dt
 			fg[1 + v_start + t] = v1 - (v0 + a0 * dt);
-
-			// cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
+	
 			fg[1 + cte_start + t] = cte1 - ((f0 - y0) + 
 												(v0 * CppAD::sin(epsi0) * dt));
-
-			// epsi[t+1] = psi[t] - psides[t] + v[t] * delta[t] / Lf * dt
+	
 			fg[1 + epsi_start + t] =  epsi1 - ((psi0 - psides0) + 
 														v0 * delta0 / Lf * dt);
 		} //for
@@ -302,7 +306,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
 
  	// Cost
  	auto cost = solution.obj_value;
-	std::cout << "Cost " << cost << std::endl;
+//	std::cout << "Cost " << cost << std::endl;
 //	std::cout << cost << ";" << std::endl;
 
 	// Save previous steering and acceleration values
