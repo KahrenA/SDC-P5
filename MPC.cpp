@@ -319,7 +319,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs)
  	// Cost
  	auto cost = solution.obj_value;
 //	std::cout << "Cost " << cost << std::endl;
-	std::cout << cost << "\t";
+//	std::cout << cost << "\t";
 
 	// Save previous steering and acceleration values
 	prev_d = solution.x[delta_start];
