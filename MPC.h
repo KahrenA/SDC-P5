@@ -11,7 +11,7 @@ class MPC
 	public:
 	const double Lf = 2.67;
 	const double ref_v = 40; 
-	double dt;	
+	double latency;	
 
 	double prev_d;
 	double prev_a;
