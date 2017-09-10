@@ -104,7 +104,7 @@ int main()
           vector<double> ptsy = j[1]["ptsy"];
           double px = j[1]["x"];
           double py = j[1]["y"];
-          double psi = j[1]["psi"];
+          double orient = j[1]["psi"];
           double v_in = j[1]["speed"];
 
 			double steer_angle_in = j[1]["steering_angle"];   
@@ -121,8 +121,8 @@ int main()
 			// transform waypoints to car coordinate
 		 	for (unsigned int i=0; i < ptsx.size(); i++) 
 			{
-	       		ptsx_carcoords[i] = (ptsx[i] - px) * cos(psi) + (ptsy[i] - py) * sin(psi);
-		        ptsy_carcoords[i] = (ptsy[i] - py) * cos(psi) - (ptsx[i] - px) * sin(psi);
+	       		ptsx_carcoords[i] =  ( (ptsx[i] - px) *  cos(orient) ) + ( (ptsy[i] - py) * sin(orient) );
+		        ptsy_carcoords[i] =  ( (ptsx[i] - px) * -sin(orient) ) + ( (ptsy[i] - py) * cos(orient) );
      		}
 
 			//=======================================================
@@ -130,8 +130,8 @@ int main()
      		auto coeffs = polyfit(ptsx_carcoords, ptsy_carcoords, 3);
 			//=======================================================
 			
-//			std::cout << "incoming px, py, psi, v, steer = " << px << "\t" <<
-//					py << "\t" << psi << "\t" << v << "\t" << steer << "\n"; 
+//			std::cout << "incoming px, py, orient, v_in, steer_in = " << px << "\t" <<
+//					py << "\t" << orient << "\t" << v_in << "\t" << steer_angle_in << "\n"; 
 
 			//-------KINEMATIC MODEL ------------------------
 			// x_[t+1] = x[t] + v[t] * cos(psi[t]) * dt
@@ -143,27 +143,26 @@ int main()
 			double predicted_y    = 0;
 
 			// psi in car coordinates will be 0 but need to add in latency effect
-			double predicted_psi  = 0 + v_in/mpc.Lf * steer_angle_in * mpc.latency;
-//			std::cout << "vel in = " << v_in << "\t" << "steer_angle_in = " << steer_angle_in << "\t";
+			double predicted_orient  = 0 + v_in/mpc.Lf * steer_angle_in * mpc.latency;
+
+			std::cout << v_in << "\t" << steer_angle_in << "\t"<< throttle_in << "\t";
 	
 			double predicted_v    = v_in + (throttle_in * mpc.latency);
-//			std::cout << "throttle_in = " << throttle_in << " ===> " << "predicted_v = " << predicted_v << "\n";
-			
+				
 			double cte  = polyeval(coeffs, 0);		// f(x@t) - y@t where x=y=0 
 			double epsi = -atan(coeffs[1]);			// psi@t - pse@desired = 0 - atan(f'(x@t) where x=0
           
 			double predicted_cte  = cte + (v_in * sin(epsi) * mpc.latency);
 //			std::cout << "cte = " << cte << " ==> " << "predict_cte = " << predicted_cte << "\n";
-			std::cout << cte << "\n";
+//			std::cout << cte << "\n";
 		
 			double predicted_epsi = epsi + (v_in/mpc.Lf * steer_angle_in * mpc.latency); 
 //			std::cout << "epsi = " << epsi << " ==> " << "predicted_epsi = " << predicted_epsi << "\n";
           
   			Eigen::VectorXd state(6);
-			state << predicted_x, predicted_y, predicted_psi, predicted_v, 
+			state << predicted_x, predicted_y, predicted_orient, predicted_v, 
 												predicted_cte, predicted_epsi;
  
-//		std::cout << "state = " << state << "\n\n";
 
 			//=====================================
 			auto result = mpc.Solve(state, coeffs);
@@ -176,7 +175,7 @@ int main()
           	double steer_value = -result[0]/deg2rad(25);		// - sign is for the simulator 
 		  	double throttle_value = result[1]; 
 
-//			std::cout << "steer_out = " << steer_value << "\t" << "throttle_out = " << throttle_value << "\n";
+			std::cout << steer_value << "\t" << throttle_value << "\n";
 
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle_value;
