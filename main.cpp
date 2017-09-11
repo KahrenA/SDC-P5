@@ -143,9 +143,9 @@ int main()
 			double predicted_y    = 0;
 
 			// psi in car coordinates will be 0 but need to add in latency effect
-			double predicted_orient  = 0 + v_in/mpc.Lf * steer_angle_in * mpc.latency;
+			double predicted_orient  = 0 - (v_in/mpc.Lf * steer_angle_in * mpc.latency);
 
-///			std::cout << v_in << "\t" << steer_angle_in << "\t"<< throttle_in << "\t";
+			std::cout << v_in << "\t" << steer_angle_in << "\t"<< throttle_in << "\t";
 	
 			double predicted_v    = v_in + (throttle_in * mpc.latency);
 				
@@ -156,7 +156,7 @@ int main()
 //			std::cout << "cte = " << cte << " ==> " << "predict_cte = " << predicted_cte << "\n";
 //			std::cout << cte << "\n";
 		
-			double predicted_epsi = epsi + (v_in/mpc.Lf * steer_angle_in * mpc.latency); 
+			double predicted_epsi = epsi - (v_in/mpc.Lf * steer_angle_in * mpc.latency); 
 //			std::cout << "epsi = " << epsi << " ==> " << "predicted_epsi = " << predicted_epsi << "\n";
           
   			Eigen::VectorXd state(6);
@@ -175,7 +175,8 @@ int main()
           	double steer_value = -result[0]/deg2rad(25);		// - sign is for the simulator 
 		  	double throttle_value = result[1]; 
 
-///			std::cout << steer_value << "\t" << throttle_value << "\n";
+//			std::cout << "steer_out = " << steer_value << "\t" << "throttle_out = " << throttle_value << "\n";
+			std::cout << steer_value << "\t" << throttle_value << "\n";
 
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle_value;
@@ -193,12 +194,10 @@ int main()
 	            if(i%2 == 0)
 				{
 	              	mpc_x_vals.push_back(result[i]);
-//					std::cout << result[i] << "\t";
 	            } 
 				else 
 				{
 	              	mpc_y_vals.push_back(result[i]);
-//					std::cout << result[i] << "\n";
 				}
 			}
   		  msgJson["mpc_x"] = mpc_x_vals;
